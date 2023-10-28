@@ -1,5 +1,5 @@
-from models.user import User
-from models.item import Item
+from models.User import User
+from models.Item import Item
 _users = {}
 _items = {}
 
