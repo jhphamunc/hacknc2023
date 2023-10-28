@@ -1,8 +1,8 @@
 from User import User
 
 class Admin(User):
-    def __init__(self, f_name, l_name, phone_number, email, organization):
-        super().__init__(self, f_name, l_name, phone_number, email, organization)
+    def __init__(self, f_name, l_name, phone_number, email, username, password, organization, ):
+        super().__init__(self, f_name, l_name, phone_number, email, username, password, organization)
         self.organization = organization
 
     def get_name(self):
@@ -17,6 +17,9 @@ class Admin(User):
     def get_organization(self):
         return self.organization
 
+    def get_password(self):
+        return self.password
+
     def set_f_name(self, f_name):
         self.f_name = f_name
 
@@ -28,3 +31,6 @@ class Admin(User):
 
     def set_organization (self, organization):
         self.organization = organization
+
+    def set_password(self, password):
+        self.password = password
