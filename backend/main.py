@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
-from backend.models.user_services import User_Services
-import Admin, Developer, Item, Student, User
+
+from models.user_services import User_Services
+from models.User import User
+
 import os
 
 
@@ -20,3 +22,8 @@ def reset(user_service: User_Services = Depends()) -> str:
         user_service.reset()
         user_service.create_user(User("Kevin", "Dai", "9197714705", "kevindai@email.unc.edu", "kevindai", "1234567890!"))
         return "OK"
+    
+@app.get("/api/registrations")
+def list_registrations(user_service: User_Services = Depends()) -> dict[User]:
+    """List all registrations in the system."""
+    return user_service.get_registrations()
