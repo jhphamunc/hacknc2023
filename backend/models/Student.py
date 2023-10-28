@@ -5,7 +5,7 @@ class Student(User):
         super().__init__(self, f_name, l_name, phone_number, username, password, email)
         self.pid = pid
 
-    def get_name(self):
+    def get_full_name(self):
         return self.f_name + ' ' + self.l_name
     
     def get_phone_number(self):

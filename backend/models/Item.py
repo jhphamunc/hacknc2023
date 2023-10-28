@@ -21,7 +21,7 @@ class Item ():
         self.item_number = item_number
     
     def set_name(self, name):
-        self._name = name
+        self.name = name
     
     def set_color(self, color):
         self.color = color
@@ -33,16 +33,16 @@ _items = {}
 item_number = 0 
 
 def add_item(name, color, location):
-        global item_number 
-        _items[item_number] = {'name': name, 'color': color, 'location': location}
-        item_number += 1
+    global item_number 
+    _items[item_number] = {'name': name, 'color': color, 'location': location}
+    item_number += 1
 
 def remove_item(item_number):
     del _items[item_number]
 
-def find_item(name = None, color = None, location = None):
+def find_item(name=None, color=None, location=None):
     matching_items = []
-    for item_number, item_info in Item.items():
+    for item_number, item_info in _items.items():
         if (name is None or item_info['name'] == name) and \
         (color is None or item_info['color'] == color) and \
         (location is None or item_info['location'] == location):
@@ -54,4 +54,8 @@ add_item("Phone", "Black", "Home")
 add_item("Book", "Red", "Library")
 
 print(_items)
-find_item(None, "Silver", None)
+remove_item()
+print(_items)
+result = find_item("Phone", None, None)
+for item in result:
+    print(item.get_name(), item.get_color(), item.get_location())
