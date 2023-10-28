@@ -5,7 +5,7 @@ class Admin(User):
         super().__init__(self, f_name, l_name, phone_number, email, username, password)
         self.location = location
 
-    def get_name(self):
+    def get_full_name(self):
         return self.f_name + ' ' + self.l_name
     
     def get_phone_number(self):
@@ -34,3 +34,4 @@ class Admin(User):
 
     def set_password(self, password):
         self.password = password
+

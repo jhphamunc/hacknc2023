@@ -1,5 +1,6 @@
 from models.User import User
 from models.Item import Item
+
 _users = {}
 _items = {}
 
@@ -22,19 +23,18 @@ class User_Services:
         new_user = User(f_name, l_name, phone_number, email, username, password)
         _users.append(new_user)
         print("New user created!")
-    
-    def login(username, password):
+
+    def login():
         print("User Login:")
         username = input("Enter your username: ")
         password = input("Enter your password: ")
-        
+
         for user in _users:
             if user.username == username and user.password == password:
                 print("Login in successful!")
-                print(f"Welcome, {user.get_full_name()}")
+                print(f"Welcome, {user.get_full_name()} ")
                 return
-        print("Invlaid username and/or passowrd. Login Failed.")
-
+            print("Invlaid username and/or passowrd. Login Failed.")
 
     item_number = 0
 
@@ -47,7 +47,7 @@ class User_Services:
         del _items[item_number]
     
     
-    def find_item(name=None, color=None, location=None):
+    def find_item(name = None, color = None, location = None):
         matching_items = []
 
         for item_number, item_info in Item.items():
