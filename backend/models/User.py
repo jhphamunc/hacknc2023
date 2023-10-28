@@ -36,36 +36,18 @@ class User:
 
     def set_password(self, password):
         self.password = password
+    
 
-users = {}
+#while True:
+    #print("\n1. Create User \n2. Login \n3. Exit")
+    #choice = input("Enter your choice: ")
 
-def sign_up(f_name, l_name, phone_number, email, username, password):
-    new_user = User(f_name, l_name, phone_number, email, username, password)
-    users[username] = new_user
-    print("New user created!")
- 
-def login(username, password):
-    print("User Login:")
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
-
-    for user in users:
-        if user.username == username and user.password == password:
-            print("Login in successful!")
-            print(f"Welcome, {user.get_full_name()}")
-            return
-    print("Invlaid username and/or passowrd. Login Failed.")
-
-while True:
-    print("\n1. Create User \n2. Login \n3. Exit")
-    choice = input("Enter your choice: ")
-
-    if choice  == "1":
-        sign_up()
-    elif choice == "2":
-        login()
-    elif choice == "3":
-        print("Exiting program")
-        break
-    else:
-        print("Invalid input.")
+    #if choice  == "1":
+        #sign_up()
+    #elif choice == "2":
+        #login()
+    #elif choice == "3":
+        #print("Exiting program")
+        #break
+    #else:
+        #print("Invalid input.")
