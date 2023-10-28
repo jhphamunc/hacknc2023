@@ -29,5 +29,29 @@ class Item ():
     def set_location(self, location):
         self.location = location
 
+_items = {}
+item_number = 0 
 
-    
+def add_item(name, color, location):
+        global item_number 
+        _items[item_number] = {'name': name, 'color': color, 'location': location}
+        item_number += 1
+
+def remove_item(item_number):
+    del _items[item_number]
+
+def find_item(name = None, color = None, location = None):
+    matching_items = []
+    for item_number, item_info in Item.items():
+        if (name is None or item_info['name'] == name) and \
+        (color is None or item_info['color'] == color) and \
+        (location is None or item_info['location'] == location):
+            matching_items.append(Item(item_number, item_info['name'], item_info['color'], item_info['location']))
+    return matching_items
+        
+add_item("Laptop", "Silver", "Office")
+add_item("Phone", "Black", "Home")
+add_item("Book", "Red", "Library")
+
+print(_items)
+find_item(None, "Silver", None)
