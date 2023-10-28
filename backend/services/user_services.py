@@ -1,4 +1,5 @@
 from models.user import User
+from models.item import Item
 _users = {}
 _items = {}
 
@@ -45,29 +46,15 @@ class User_Services:
     def remove_item(item_number):
         del _items[item_number]
     
-    # inputname = input[0]
-    # inputc = input[1]
-    # input location = input[2]
-
-    # find_item()
     
-    def find_item(name, color, location):
-        input_name = True
-        input_color = True 
-        input_location = True
-        
-        if name == None: 
-            input_name = False 
-        
-        if color == None: 
-            input_color = False 
+    def find_item(name=None, color=None, location=None):
+        matching_items = []
 
-        if location == None: 
-            input_location = False 
-            
-        if not(input_name & input_color & input_location):
-            print("Please input a filter")
-        
-        
-        #else:
+        for item_number, item_info in Item.items():
+            if (name is None or item_info['name'] == name) and \
+            (color is None or item_info['color'] == color) and \
+            (location is None or item_info['location'] == location):
+                matching_items.append(Item(item_number, item_info['name'], item_info['color'], item_info['location']))
+
+        return matching_items
         
