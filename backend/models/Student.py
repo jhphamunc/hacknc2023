@@ -1,8 +1,8 @@
 from User import User
 
 class Student(User):
-    def __init__(self, f_name, l_name, phone_number, email, pid):
-        super().__init__(self, f_name, l_name, phone_number, email)
+    def __init__(self, f_name, l_name, phone_number, email, username, password, pid):
+        super().__init__(self, f_name, l_name, phone_number, username, password, email)
         self.pid = pid
 
     def get_name(self):
@@ -16,6 +16,9 @@ class Student(User):
     
     def get_pid(self):
         return self.pid
+    
+    def get_password(self):
+        return self.password
 
     def set_f_name(self, f_name):
         self.f_name = f_name
@@ -28,3 +31,7 @@ class Student(User):
     
     def set_pid (self, pid):
         self.pid = pid 
+
+    def set_password(self, password):
+        self.password = password
+    

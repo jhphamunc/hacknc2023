@@ -7,7 +7,7 @@ class User:
         self.username = username
         self.password = password
 
-    def full_name(self):
+    def get_full_name(self):
         return self.f_name + ' ' + self.l_name
     
     def get_phone_number(self):
@@ -37,22 +37,14 @@ class User:
     def set_password(self, password):
         self.password = password
 
-users = []
+users = {}
 
-def create_user():
-    print("Create a new user:")
-    f_name = input("Enter first name: ")
-    l_name = input("Enter last name: ")
-    phone_number = input("Enter phone number: ")
-    email = input("Enter email: ")
-    username = input ("Enter a username: ")
-    password = input("Enter a password: ")
-
+def sign_up(f_name, l_name, phone_number, email, username, password):
     new_user = User(f_name, l_name, phone_number, email, username, password)
-    users.append(new_user)
+    users[username] = new_user
     print("New user created!")
-
-def login():
+ 
+def login(username, password):
     print("User Login:")
     username = input("Enter your username: ")
     password = input("Enter your password: ")
@@ -60,16 +52,16 @@ def login():
     for user in users:
         if user.username == username and user.password == password:
             print("Login in successful!")
-            print(f"Welcome, {user.full_name()} ")
+            print(f"Welcome, {user.get_full_name()}")
             return
-        print("Invlaid username and/or passowrd. Login Failed.")
+    print("Invlaid username and/or passowrd. Login Failed.")
 
 while True:
     print("\n1. Create User \n2. Login \n3. Exit")
     choice = input("Enter your choice: ")
 
     if choice  == "1":
-        create_user()
+        sign_up()
     elif choice == "2":
         login()
     elif choice == "3":
@@ -77,4 +69,3 @@ while True:
         break
     else:
         print("Invalid input.")
-
